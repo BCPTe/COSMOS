@@ -1,0 +1,32 @@
+.dragger {
+	min-height: 30%;
+	max-height: 80%;
+	padding: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	border: 1px solid var(--gray-color);
+    border-radius: 5px;
+	overflow: auto;
+	color:var(--gray-color);
+	cursor: pointer;
+	gap: 10px;
+
+	.icon {
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.btn {
+		background-color: var(--gray-color);
+		color: #222222;
+		border: 0;
+		font-weight: bold;
+		padding-inline: 2rem;
+	}
+
+	.text {
+
+	}
+}

@@ -6,10 +6,13 @@ import Footer from "./components/Footer/Footer";
 import Messages from "./components/Messages/Messages";
 import Header from "./components/Header/Header";
 import { useState } from "react";
+import { counter } from "@fortawesome/fontawesome-svg-core";
+import Dragger from "./components/Dragger/Dragger";
 
 function App() {
 	const [newMessage, setNewMessage] = useState(null)
 	const [toSend, setToSend] = useState(null)
+	const [msgCounter, setMsgCounter] = useState(1)
 
 	const handleKeyPress = (e) => {
 		if (e.key === "Enter") {
@@ -37,24 +40,31 @@ function App() {
 		<>
 			<Header />
 			<div className="content">
-				<Messages msg={toSend}/>
-				<Col xs={11} md={6} className="input-container">
-					<Col className="p-0">
-						<Form.Control
-						value={newMessage ?? ""}
-						className="input-text"
-						placeholder="Enter input"
-						onChange={(e) => insertNewMessage(e)}
-						onKeyUp={(e) => handleKeyPress(e)}/>
-					</Col>
-					<div className="btn-container p-0">
-						<Button className="input-btn" onClick={() => sendMessage()}>
-							<FontAwesomeIcon icon={faChevronRight} />
-						</Button>
-					</div>
-				</Col>
+				{/* TODO: CHANGE ACTIVATION STATE (msgcounter is not the correct one) */}
+				{msgCounter === 1 ? 
+				(
+					<Dragger />
+				) : (
+					<>
+						<Messages msg={toSend} />
+						<Col xs={11} md={6} className="input-container">
+							<Col className="p-0">
+								<Form.Control
+								value={newMessage ?? ""}
+								className="input-text"
+								placeholder="Enter input"
+								onChange={(e) => insertNewMessage(e)}
+								onKeyUp={(e) => handleKeyPress(e)}/>
+							</Col>
+							<div className="btn-container p-0">
+								<Button className="input-btn" onClick={() => sendMessage()}>
+									<FontAwesomeIcon icon={faChevronRight} />
+								</Button>
+							</div>
+						</Col>
+					</>
+				)}
 			</div>
-			
 			<Footer />
 		</>
 	)

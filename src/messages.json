@@ -2,11 +2,6 @@
     "data":
     [
         {
-            "sender" : "cosmos",
-            "timestamp": 1696609456,
-            "text": "sono un pinguino"
-        },
-        {
             "sender" : "you",
             "timestamp": 1696609458,
             "text": "io sono un pinguino"

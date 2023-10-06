@@ -5,7 +5,6 @@
 .messages {
 	max-height: 80%;
 	display: flex;
-	// display: none;
 	align-items: center;
 	flex-direction: column;
 	padding: 1rem;
@@ -13,6 +12,7 @@
     border-radius: 5px;
 	gap: .5rem;
 	overflow: auto;
+	// transition: scroll-behavior 3s ease-in-out;
 
 	.message {
 		width: 100%;
