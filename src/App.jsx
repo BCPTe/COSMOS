@@ -9,6 +9,10 @@ import { useState } from "react";
 import { counter } from "@fortawesome/fontawesome-svg-core";
 import Dragger from "./components/Dragger/Dragger";
 
+// import pdf from "../PdfViewer/JavaScript.pdf"
+import PdfViewer from "./components/PdfViewer/PdfViewer"
+import pdf from "./components/PdfViewer/JavaScript.pdf"
+
 function App() {
 	const [newMessage, setNewMessage] = useState(null)
 	const [toSend, setToSend] = useState(null)
@@ -65,6 +69,13 @@ function App() {
 					</>
 				)}
 			</div>
+			{/* {pdf &&
+				<Col xs={11} md={6} className="d-flex justify-content-between">
+					<PdfViewer pdf={pdf} />
+					<PdfViewer pdf={pdf} />
+					<PdfViewer pdf={pdf} />
+				</Col>
+			} */}
 			<Footer />
 		</>
 	)
