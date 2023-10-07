@@ -1,54 +1,61 @@
-import React, { useState, useRef } from "react";
-import { Button, Col } from "react-bootstrap"
+import React, { useState, useRef, useEffect } from "react";
+import { Button, Card, Col } from "react-bootstrap"
 import "./Dragger.scss";
-import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faCloudArrowUp, faFolderOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDropzone } from "react-dropzone";
+import PdfViewer from "../PdfViewer/PdfViewer";
+
+// import pdf from "../PdfViewer/JavaScript.pdf"
 
 const Dragger = () => {
-	const [files, setFiles] = useState([]);
-	const fileInputRef = useRef(null);
-
-	const handleDrop = (event) => {
+	const onDrop = (event) => {
 		event.preventDefault();
 		const droppedFiles = Array.from(event.dataTransfer.files);
-		setFiles(droppedFiles);
-	};
+		const pdfFiles = droppedFiles.filter((file) => file.type === 'application/pdf');
+		setFiles(prevFiles => [...prevFiles, ...pdfFiles]);
+	}
 
-	const handleDragOver = (event) => {
-		event.preventDefault();
-	};
+	const [files, setFiles] = useState([]);
+	const fileInputRef = useRef(null);
+	const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
-	const handleFileInputChange = (event) => {
-		const selectedFiles = Array.from(event.target.files);
-		const pdfFiles = selectedFiles.filter((file) => file.type === 'application/pdf');
-		setFiles(pdfFiles);
-	};
-
-	const handleClick = () => {
-		fileInputRef.current.click();
-	};
+	// useEffect(() => {
+	// 	console.log(pdf)
+	// }, [])
+	
 
 	return (
-		<Col xs={11} md={6} className="dragger" onDrop={handleDrop} onDragOver={handleDragOver} onClick={handleClick}>
-			<FontAwesomeIcon className="icon" icon={faCloudArrowUp} />
-			<h3 className="text m-0">Drag&Drop files here</h3>
-			<h6>or</h6>
-			{files.length > 0 && (
-				<ul>
-					{files.map((file, index) => (
-						<li key={index}>{file.name}</li>
-					))}
-				</ul>
-			)}
-			<input
-				type="file"
-				ref={fileInputRef}
-				style={{ display: "none" }}
-				onChange={handleFileInputChange}
-				multiple
-			/>
-			<Button>Browse files</Button>
-		</Col>
+		<>
+			<Col xs={11} md={6} className="dragger" {...getRootProps()}>
+				<FontAwesomeIcon className="icon" icon={isDragActive ? faFolderOpen : faCloudArrowUp} />
+				{/* {files.length > 0 &&
+					// <Card>
+					// 	{files.map((file, index) => (
+						// 		<li key={index}>{file.name}</li>
+					// 	))}
+					// </Card>
+					files.map((file, index) => (
+						<PdfViewer pdf={pdf} />
+						)
+					)} */}
+				<input {...getInputProps()}/>
+				{isDragActive ? (
+					<h3>Drop the files here...</h3>
+					) : (
+					<>
+						<h3>Drag&Drop some files here</h3>
+						<h6>or</h6>
+						<h4>click to select files</h4>
+					</>
+				)}
+			</Col>
+			{/* {pdf &&
+				<Col xs={11} md={6}>
+					<PdfViewer pdf={pdf} />
+				</Col>
+			} */}
+		</>
 	);
 };
 
