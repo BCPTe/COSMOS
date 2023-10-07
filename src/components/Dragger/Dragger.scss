@@ -10,6 +10,7 @@
 	overflow: auto;
 	color:var(--gray-color);
 	text-align: center;
+	cursor: pointer;
 
 	&:hover, &.dragging {
 		background-color: var(--black-color);
@@ -30,7 +31,7 @@
 }
 
 .pdf-cards {
-	height: 40%;
+	height: 35%;
 	padding-block: 5px;
 	display: flex;
 	align-items: center;
@@ -69,24 +70,39 @@
 		}
 		
 		.card-body {
-			height: 60%;
+			height: 55%;
 			align-items: baseline;
 			font-size: .65rem;
 			color: var(--light-gray-color);
 		}
 
 		.card-footer {
-			height: 20%;
+			height: 25%;
 			justify-content: center;
 
-			.btn {
+			.rm-btn {
 				height: 100%;
-				font-size: .75rem;
+				font-size: .65rem;
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				background-color: var(--dark-orange-color);
+				border: 0;
+
+				&:hover {
+					background-color: var(--dark-orange-color-hover);
+				}
 			}
 		}
 	}
+}
 
+.starter-btn {
+	height: 10%;
+	padding-inline: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: .75rem;
+	text-transform: uppercase;
 }

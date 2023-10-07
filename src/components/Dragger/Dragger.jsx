@@ -1,38 +1,30 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card, Col } from "react-bootstrap"
+import simulation_files from "../../files.json"
 import "./Dragger.scss";
 import { faCloudArrowUp, faFolderOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDropzone } from "react-dropzone";
-import PdfViewer from "../PdfViewer/PdfViewer";
 
-// import pdf from "../PdfViewer/JavaScript.pdf"
-
-const Dragger = () => {
+const Dragger = (props) => {
 	const [files, setFiles] = useState([]);
-	const fileInputRef = useRef(null);
-
 	
-	// const onDrop = (acceptedFiles, rejectedFiles, event) => {
-	// 	console.log(event)
-	// 	event.preventDefault();
-	// 	const droppedFiles = Array.from(event.dataTransfer.files);
-		
-	// 	// TODO: MAKE A CALL TO BACKEND TO GET DESCRIPTION FOR EACH FILE (i send files array and
-	// 	// get a response with an descriptions array)
-		
-	// 	setFiles(prevFiles => [...prevFiles, ...droppedFiles]);
-	// }
-	
-	const {acceptedFiles, event, getRootProps, getInputProps, isDragActive} = useDropzone({
+	const {acceptedFiles, getRootProps, getInputProps, isDragActive} = useDropzone({
 		accept: 
 		{
 			'application/pdf': ['.pdf'],
 		}
 	});
+
+	const sendFileToBackend = () => {
+		// TODO: CALL BACKEND -> SEND ALL FILES AND OPEN CHAT PAGE
+		props.setPage(1)
+		return null
+	}
 	
 	useEffect(() => {
-		const droppedFiles = Array.from(acceptedFiles);
+		// filter if new files uploaded are already present
+		const droppedFiles = Array.from(acceptedFiles.filter(newFile => !files.some(filePresent => filePresent.name === newFile.name)));
 		
 		// TODO: MAKE A CALL TO BACKEND TO GET DESCRIPTION FOR EACH FILE (i send files array and
 		// get a response with an descriptions array)
@@ -43,29 +35,7 @@ const Dragger = () => {
 	const handleRemoveFile = (index) => setFiles(files => files.filter((f, i) => i !== index))
 
 	useEffect(() => {
-		var simulation_files = [
-			{
-				name: "Il magico pdf di Franz",
-				description: "im gettin this description from backend"
-			},
-			{
-				name: "Il magico pdf di Johnny",
-				description: "im gettin this description from backend"
-			},
-			{
-				name: "Il magico pdf di Johnny",
-				description: "im gettin this description from backend"
-			},
-			{
-				name: "Il magico pdf di Johnny",
-				description: "im gettin this description from backend"
-			},
-			{
-				name: "Il magico pdf di Pecorino",
-				description: "im gettin this description from backend"
-			}
-		]
-		setFiles(simulation_files)
+		setFiles(simulation_files['data'])
 	}, [])
 
 	useEffect(() => {
@@ -99,7 +69,7 @@ const Dragger = () => {
 								<Card.Text className="slide-right">{file.description}</Card.Text>
 							</Card.Body>
 							<Card.Footer>
-								<Button variant="danger" onClick={() => handleRemoveFile(index)}>
+								<Button className="rm-btn" onClick={() => handleRemoveFile(index)}>
 									Remove
 								</Button>
 							</Card.Footer>
@@ -107,6 +77,9 @@ const Dragger = () => {
 					))}
 				</Col>
 			}
+			<Button variant="success" className="starter-btn" onClick={() => sendFileToBackend()}>
+				Start Analysis
+			</Button>
 		</>
 	);
 };
