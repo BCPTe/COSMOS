@@ -125,16 +125,13 @@ const Messages = (props) => {
 
 	return (
 		<>
-			{messages.length > 0 && (
+			{messages.length > 0 &&
 			<Col
 				xs={11}
 				md={6}
 				className="messages"
 				ref={messagesContainerRef}
 			>
-				<div className="msg-spinner-overlay">
-					<Spinner animation="border" size="lg" variant="info" className="spinner-backend"/>
-				</div>
 				{messages.map((m, index) => (
 					<div className={defineClass(m, index)} key={index}>
 						<div className="sender">
@@ -150,8 +147,13 @@ const Messages = (props) => {
 						<div className="text">{m.text}</div>
 					</div>
 				))}
+				{loading &&
+				<div className="msg-spinner-overlay">
+					<Spinner animation="border" size="lg" variant="info" className="spinner-backend"/>
+				</div>
+				}
 			</Col>
-			)}
+			}
 			<Col xs={11} md={6} className="input-container">
 				<Col className="p-0">
 					<Form.Control
@@ -160,14 +162,14 @@ const Messages = (props) => {
 						placeholder="Enter input"
 						onChange={(e) => handleMessageInsertion(e)}
 						onKeyUp={(e) => handleKeyPress(e)}
-					/>
+						/>
 				</Col>
 				<div className="btn-container p-0">
 					<Button
 						className="input-btn"
 						onClick={() => sendMessage()}
 						disabled={btnDisabled}
-					>
+						>
 						<FontAwesomeIcon icon={faChevronRight} />
 					</Button>
 				</div>

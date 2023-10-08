@@ -22,7 +22,7 @@
 		justify-content: flex-start;
 		letter-spacing: .05rem;
 
-		&.client .sender {
+		&.client .sender, &.client .text {
 			// this moves sender to right when client and not cosmos
 			flex-direction: row-reverse;
 		}
