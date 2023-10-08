@@ -83,7 +83,6 @@ const Dragger = (props) => {
 			}
 			else {
 				setError(false)
-				props.setLoading(true)
 				return response.data
 			}
 		})

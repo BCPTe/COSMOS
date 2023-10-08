@@ -13,7 +13,7 @@
 	cursor: pointer;
 
 	&:hover, &.dragging {
-		background-color: var(--black-color);
+		background-color: var(--dark-gray-color2);
 	}
 
 	.icon {
@@ -23,7 +23,7 @@
 
 	.btn {
 		background-color: var(--gray-color);
-		color: var(--dark-gray-bg-color);
+		color: var(--dark-gray-color);
 		border: 0;
 		font-weight: bold;
 		padding-inline: 2rem;
@@ -107,7 +107,7 @@
 	font-size: .75rem;
 	text-transform: uppercase;
 	font-weight: bold;
-	letter-spacing: .2rem;
+	letter-spacing: .15rem;
 	border: 0;
 
 	&, &:focus, &:disabled {
