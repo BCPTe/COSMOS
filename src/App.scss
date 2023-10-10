@@ -12,6 +12,26 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
+
+	.model-selector-container {
+		// height: 5%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		// background-color: red;
+
+		.llm-btn {
+			width: 2.5rem;
+			height: 2.5rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: var(--gray-color);
+			color: var(--dark-gray-color);
+			border: 0;
+		}
+	}	
 }
 
 .spinner-overlay {
