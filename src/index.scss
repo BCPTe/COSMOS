@@ -4,13 +4,14 @@
 	--white-color: #ffffff;
 	--light-gray-color: #cecece;
 	--gray-color: #575757;
-	--gray-color-hover: #4B4B4B;
+	--gray-color-hover: #4b4b4b;
 	--dark-gray-color: #222222;
 	--dark-gray-color2: #1c1c1c;
-	--violet-color: #9e44ff;
-	--violet-color-hover: #7318D4;
-	--orange-color: #FF8C59;
-	--orange-color-hover: #E76831;
+	--primary-color: #00c3b6;
+	--primary-color-hover: #00aea3;
+	--primary-color-active: #00948a;
+	--secondary-color: #222222;
+	--secondary-color-hover: #000000;
 	--dark-orange-color: #e85e23;
 	--dark-orange-color-hover: #df4d0e;
 }
@@ -29,7 +30,8 @@ body {
 	height: 100dvh;
 	margin: 0;
 	padding: 0;
-	background-color: var(--dark-gray-color) !important;
+	background-image: url("assets/h_background.png");
+	// background-color: var(--dark-gray-color) !important;
 	// font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
 	// 	"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 	// 	"Helvetica Neue", sans-serif;
@@ -47,6 +49,6 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: var(--violet-color); /* color of the scroll thumb */
+	background-color: var(--primary-color); /* color of the scroll thumb */
 	border-radius: 5px; /* roundness of the scroll thumb */
 }

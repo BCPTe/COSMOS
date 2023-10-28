@@ -10,4 +10,8 @@
     padding-left: .75rem;
     background-color: #131313;
     color: #FFFFFF;
+
+    strong {
+        color: var(--primary-color)
+    }
 }

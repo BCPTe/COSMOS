@@ -3,17 +3,19 @@
 	padding: 1rem;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-direction: column;
 	border: 1px solid var(--gray-color);
-    border-radius: 5px;
+	border-radius: 5px;
 	overflow: auto;
-	color:var(--gray-color);
+	color: var(--gray-color);
 	text-align: center;
 	cursor: pointer;
 
-	&:hover, &.dragging {
+	&:hover,
+	&.dragging {
 		background-color: var(--dark-gray-color2);
+		color: var(--primary-color-active);
 	}
 
 	.icon {
@@ -46,18 +48,18 @@
 		height: 100%;
 		min-width: 32%;
 		width: 33.33%;
-		font-size: .75rem;
+		font-size: 0.75rem;
 		background-color: transparent;
 		color: var(--white-color);
 		background-color: var(--gray-color);
-		
+
 		& > * {
 			display: flex;
 			align-items: center;
-			padding-inline: .5rem;
+			padding-inline: 0.5rem;
 			padding-block: 3px;
 		}
-		
+
 		.card-header {
 			height: 20%;
 
@@ -66,14 +68,14 @@
 				// font-weight: bold;
 				white-space: nowrap;
 				overflow: hidden;
-				text-overflow: ellipsis;	
+				text-overflow: ellipsis;
 			}
 		}
-		
+
 		.card-body {
 			height: 55%;
 			align-items: baseline;
-			font-size: .65rem;
+			font-size: 0.65rem;
 			color: var(--light-gray-color);
 		}
 
@@ -83,7 +85,7 @@
 
 			.rm-btn {
 				height: 100%;
-				font-size: .65rem;
+				font-size: 0.65rem;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -98,23 +100,30 @@
 	}
 }
 
-.starter-btn {
+.btn.btn-primary.starter-btn {
 	height: 10%;
 	padding-inline: 1.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: .75rem;
+	font-size: 0.75rem;
 	text-transform: uppercase;
 	font-weight: bold;
-	letter-spacing: .15rem;
+	letter-spacing: 0.15rem;
 	border: 0;
 
-	&, &:focus, &:disabled {
-		background-color: var(--violet-color);
+	&,
+	&:disabled {
+		// note that when btn is disabled
+		// bootstrap set opacity to var(--bs-btn-disabled-opacity)
+		background-color: var(--primary-color);
 	}
 	&:hover {
-		background-color: var(--violet-color-hover);
+		background-color: var(--primary-color-hover);
+	}
+	&:focus,
+	&:active {
+		background-color: var(--primary-color-active);
 	}
 }
 
@@ -124,7 +133,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: .75rem;
+	font-size: 0.75rem;
 	border: 1px solid red;
 	border-radius: 5px;
 	color: red;

@@ -1,4 +1,4 @@
-import avatar from "../../assets/only_logo.png";
+import avatar from "../../assets/logo/black/logo.png";
 import { Col, Form, Button, Spinner } from "react-bootstrap";
 import "./Messages.scss";
 import React, { useEffect, useRef, useState } from "react";
